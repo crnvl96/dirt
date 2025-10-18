@@ -1,0 +1,32 @@
+package internal
+
+import (
+	"os"
+
+	"github.com/spf13/cobra"
+)
+
+var rootCmd = &cobra.Command{
+	Use:   "dirt",
+	Short: "dirt is a cli tool to check git repositories for uncommitted or unpushed changes",
+	Long: `
+dirt scans specified directories (and their subdirectories up to 2 levels deep) for git repositories and checks for uncommitted changes or unpushed commits.
+
+If no targets are specified, it scans the current directory.
+
+Examples:
+  dirt -t ~/config ~/Developer
+`,
+	RunE: run,
+}
+
+func init() {
+	rootCmd.Flags().StringSliceP("target", "t", []string{}, "Target directories to scan (scans recursively up to 2 levels)")
+}
+
+func Execute() {
+	err := rootCmd.Execute()
+	if err != nil {
+		os.Exit(1)
+	}
+}
