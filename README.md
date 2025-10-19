@@ -4,6 +4,8 @@ A CLI tool to check if you have uncommitted changes or unpushed commits in any o
 
 Dirt scans specified directories (and their subdirectories up to 2 levels deep) for Git repositories and reports any that have uncommitted changes or unpushed commits.
 
+> You can also check the documentation at [pkg.go.dev](https://pkg.go.dev/github.com/crnvl96/dirt)
+
 ## Installation
 
 ### Using Go

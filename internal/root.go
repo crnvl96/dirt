@@ -15,7 +15,7 @@ dirt scans specified directories (and their subdirectories up to 2 levels deep) 
 If no targets are specified, it scans the current directory.
 
 Examples:
-  dirt -t ~/config ~/Developer
+  dirt -t ~/config -t ~/Developer
 `,
 	RunE: run,
 }
@@ -24,6 +24,9 @@ func init() {
 	rootCmd.Flags().StringSliceP("target", "t", []string{}, "Target directories to scan (scans recursively up to 2 levels)")
 }
 
+// Execute runs the root command of the Dirt CLI tool.
+//
+// It is automatically run when the program is executed
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
